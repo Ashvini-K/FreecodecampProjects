@@ -1,0 +1,99 @@
+html {
+   scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+}
+
+body {
+    position: relative;
+  min-height: 100%;
+  min-height: 100vh; 
+} 
+
+#about h2{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+#quote h4{
+    font-family: 'Dancing Script', cursive;
+    color: gray;
+    text-align: center;
+}
+
+
+#career h2{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+#awards h2{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+
+
+#citation h2{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+#citation h4{
+    font-family: 'Dancing Script', cursive;
+}
+
+#gallery h2{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+#title {
+    text-align: center;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+#img-div{
+    text-align: center;
+}
+
+#image{
+    border-radius: 50%;
+    display: block;
+    margin: auto;  
+}
+
+
+
+#tribute-info{
+    text-align: justify;
+   /* text-align-last: center;*/
+}
+
+.carousel {
+    width:60vh;
+    height:60vh;
+    margin: auto;
+  }
+  
+ 
+  
+  .imgdiv{
+    overflow:hidden;
+    height:200px;
+  
+  }
+
+  #authorinfo p{
+    font-size:small;
+  }
+
+div.roundedbox{
+    border-radius: 10px;
+    border:0.6px solid lightgray;
+    text-align: center;
+    box-shadow: 2px 2px lightgrey;
+    width: 400px;
+    margin: 0 auto;    
+  }
+
+ div.roundedbox a{
+     color: black;
+ }

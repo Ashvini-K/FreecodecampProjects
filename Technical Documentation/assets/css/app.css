@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  width: 25%;
+  height: 610px;
+  float: left;
+  padding: 15px;
+  border-right: 3px solid gray;
+  background-color: #F0F0F0;
+  overflow-y: scroll;
+  position: fixed;
+}
+
+.main {
+  width: 75%;
+  float: right;
+  padding: 15px;
+ /* border: 1px solid red;*/
+  margin-left: 310px;
+}
+
+#express_node_introduction{
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+}
+
+#links{
+  list-style-type: none;
+}
+
+@media only screen and (max-width : 768px) {
+  .menu, .main {
+     width: 100%;
+     height: 200px;
+     position: relative;
+    }
+    .menu{
+      border: 3px solid gray;
+    }
+}
+
+#intro, #node, #express, #look, #world, #importing, #asynchronousapis, #routehandlers, #refe{
+  text-align: left;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.justifying{
+  text-align: justify;
+}
+
+.stylingcode{
+  width: 75%;
+  background-color: #F0F0F0;
+  border-left: 5px solid gray;
+  margin: auto;
+}
+
+code{
+   color:black;
+}
+
+hr{
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+a{
+  font-weight: 400;
+}
+
+.blue{
+  color: #6699FF;
+}
+
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
+}
+
+.gray{
+  color: gray;
+}
+
+.darkred{
+  color:#660000;
+}
+
+.brown{
+  color: 	#8B4513;
+}
+
+.darkblack{
+  font-weight: 900;
+}
+
+.black{
+  font-weight: 600;
+}
+
+.yellow{
+  background-color:#fff4cc;
+  border-left: 5px solid  #f4a460;
+ font-size: 14px;
+}
+
+.yellow p{
+  padding-left: 20px;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 15px;
+  padding-right: 10px;
+}
+
+.highlights{
+  background-color:#F0F0F0;
+}

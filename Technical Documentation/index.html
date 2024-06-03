@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/app.css">
+    <title>Technical Documentation</title>
+</head>
+<body>
+    
+    <div class="menu">
+        <nav id="navbar">
+            <header id="express_node_introduction">Express/Node Introduction</header>
+            <hr>
+            <ul id="links">
+                <li>
+                    <a class="nav-link" href="#Node_Introduction">Node Introduction</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#Hello_Node">Hello Node</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#Introducing_Express">Introducing Express</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#What_does_Express_code_look_like"> What does Express code look like</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#Helloworld_Express">Helloworld Express</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#Importing_and_creating_modules">Importing and creating modules</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#Using_asynchronous_APIs">Using asynchronous APIs</a>
+                </li><br>
+                <li>
+                    <a class="nav-link" href="#Creating_route_handlers">Creating route handlers</a>
+                </li><br>
+
+                <li>
+                    <a class="nav-link" href="#Reference">Reference</a>
+                </li><br>
+
+            </ul>
+        </nav>
+        
+      </div>
+      
+
+    <main id="main-doc">
+        <div class="main">
+        <section class="main-section" id="Node_Introduction">
+            <header id="intro">
+                Node Introduction
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    Node (or more formally Node.js) is an open-source, cross-platform runtime environment that allows developers to create all kinds of server-side tools and applications in JavaScript. The runtime is intended for use outside of a browser context (i.e. running directly on a computer or server OS). As such, the environment omits browser-specific JavaScript APIs and adds support for more traditional OS APIs including HTTP and file system libraries.
+                </p>
+                <p class="justifying">
+                    From a web server development perspective Node has a number of benefits:
+                </p>
+                <p class="justifying">
+                    <ul>
+                        <li>
+                            Great performance! Node was designed to optimize throughput and scalability in web applications and is a good solution for many common web-development problems (e.g. real-time web applications).
+                        </li><br>
+                        <li>
+                            Code is written in "plain old JavaScript", which means that less time is spent dealing with "context shift" between languages when you're writing both client-side and server-side code.
+                        </li><br>
+                        <li>
+                            JavaScript is a relatively new programming language and benefits from improvements in language design when compared to other traditional web-server languages (e.g. Python, PHP, etc.) Many other new and popular languages compile/convert into JavaScript so you can also use TypeScript, CoffeeScript, ClojureScript, Scala, LiveScript, etc.
+                        </li><br>
+                        <li>
+                            The node package manager (NPM) provides access to hundreds of thousands of reusable packages. It also has best-in-class dependency resolution and can also be used to automate most of the build toolchain.
+                        </li><br>
+                        <li>
+                            It has a very active third party ecosystem and developer community, with lots of people who are willing to help.
+                        </li><br>
+                    </ul>
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="Hello_Node">
+            <header id="node">
+                Hello Node
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    The following example creates a web server that listens for any kind of HTTP request on the URL <span class="highlights">http://127.0.0.1:8000/ </span>— when a request is received, the script will respond with the string: "Hello World". If you have already installed node, you can follow these steps to try out the example:
+                </p>
+                <p class="justifying">
+                    <ol>
+                        <li>
+                            Open Terminal (on Windows, open the command line utility)
+                        </li><br>
+                        <li>
+                            Create the folder where you want to save the program, for example, <span class="highlights">test-node</span> and then enter it by entering the following command into your terminal:
+                        </li>
+                        <br>
+                        <div class="stylingcode">
+                            <code>
+                               &nbsp; cd test-node
+                            </code>
+                        </div>
+                        <br>
+                        <li>Using your favorite text editor, create a file called <span class="highlights">hello.js</span> and paste the following code into it:</li><br>
+                        <div class="stylingcode">
+                            <code>
+                               &nbsp; <span class="gray">// Load HTTP module</span><br>
+                               &nbsp;<span class="blue"> const </span> http <span class="brown"> = </span><span class="red">require</span><span class="gray">(</span><span class="green">"http"</span><span class="gray">);</span><br><br>
+                               
+                               &nbsp; <span class="blue">const</span> hostname<span class="brown"> = </span><span class="green"> "127.0.0.1"</span><span class="gray">;</span><br>
+                               &nbsp; <span class="blue">const</span> port<span class="brown"> = </span><span class="darkred">8000</span><span class="gray">;</span><br><br>
+                               
+                               &nbsp; <span class="gray"> // Create HTTP server </span> <br>
+                               &nbsp; <span class="blue">const</span> server = http.<span class="red">createServer</span><span class="gray">((</span>req<span class="gray">,</span> res<span class="gray">)</span><span class="brown"> =></span> <span class="gray">{</span><br><br>
+                               
+                                &nbsp; &nbsp; &nbsp;&nbsp;<span class="gray"> // Set the response HTTP header with HTTP status and Content type</span> <br>
+
+                                &nbsp; &nbsp; &nbsp;&nbsp; res.<span class="red">writeHead</span><span class="gray">(</span><span class="darkred">200</span><span class="gray">,</span> <span class="gray">{</span><span class="green">'Content-Type': 'text/plain'</span><span class="gray">});</span> <br><br>
+                                  
+                                &nbsp; &nbsp; &nbsp;&nbsp; <span class="gray"> // Send the response body "Hello World" </span><br>
+                                &nbsp; &nbsp; &nbsp;&nbsp;  res.<span class="red">end</span><span class="gray">(</span><span class="green">'Hello World\n'</span><span class="gray">);</span> <br>
+                                &nbsp; <span class="gray">  });</span><br> <br>
+                               
+                                &nbsp; <span class="gray"> // Prints a log once the server starts listening </span><br>
+                                &nbsp;  server<span class="gray">.</span><span class="red">listen</span><span class="gray">(</span>port<span class="gray">,</span> hostname<span class="gray">, ()</span><span class="brown"> =></span><span class="gray"> {</span> <br>
+                                    &nbsp;    console<span class="gray">.</span><span class="red">log</span><span class="gray">(</span><span class="green">`Server running at http://</span><span class="gray">${</span>hostname<span class="gray">}:${</span>port<span class="gray">}/`);</span> <br>
+                                    &nbsp;   <span class="gray">}) </span><br>
+                            </code>
+                        </div>
+                        <br>
+                        <li>
+                            Save the file in the folder you created above.
+                        </li><br>
+                        <li>
+                            Go back to the terminal and type the following command:
+                        </li><br>
+                        <div class="stylingcode">
+                            <code>
+                               &nbsp; node hello.js
+                            </code>
+                        </div>
+                        <br>
+                    </ol>
+                </p>
+                <p class="justifying">
+                    Finally, navigate to <span class="highlights">http://localhost:8000</span> in your web browser; you should see the text <strong>"Hello World"</strong> in the upper left of an otherwise empty web page.
+                </p>
+            </article>
+        </section>
+
+        <br>
+
+        <section class="main-section" id="Introducing_Express">
+            <header id="express">
+                Introducing Express
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    Express is the most popular Node web framework, and is the underlying library for a number of other popular Node web frameworks. It provides mechanisms to:
+                </p>
+                <p class="justifying">
+                    <ul>
+                        <li>Write handlers for requests with different HTTP verbs at different URL paths (routes).</li>
+                        <li>Integrate with "view" rendering engines in order to generate responses by inserting data into templates.</li>
+                        <li>Set common web application settings like the port to use for connecting, and the location of templates that are used for rendering the response.</li>
+                        <li>Add additional request processing "middleware" at any point within the request handling pipeline.</li>
+                    </ul>
+                </p>
+                <p class="justifying">
+                    While Express itself is fairly minimalist, developers have created compatible middleware packages to address almost any web development problem. There are libraries to work with cookies, sessions, user logins, URL parameters,<span class="highlights"> POST</span> data, security headers, and many more. You can find a list of middleware packages maintained by the Express team at Express Middleware (along with a list of some popular 3rd party packages).
+                </p>
+                <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Note:</span> This flexibility is a double edged sword. There are middleware packages to address almost any problem or requirement,but working out the right packages to use can sometimes be a challenge. There is also no "right way" to structure an application, and many examples you might find on the Internet are not optimal, or only show a small part of what you need to do in order to develop a web application.
+                        </p>
+                </div>
+            </article>
+        </section>
+
+        <br>
+
+        <section class="main-section" id="What_does_Express_code_look_like">  
+            <header id="look">
+                What does Express code look like
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    In a traditional data-driven website, a web application waits for HTTP requests from the web browser (or other client). When a request is received the application works out what action is needed based on the URL pattern and possibly associated information contained in<span class="highlights"> POST</span> data or <span class="highlights">GET</span> data. Depending on what is required it may then read or write information from a database or perform other tasks required to satisfy the request. The application will then return a response to the web browser, often dynamically creating an HTML page for the browser to display by inserting the retrieved data into placeholders in an HTML template.
+                </p><br>
+                <p class="justifying">
+                    Express provides methods to specify what function is called for a particular HTTP verb (<span class="highlights">GET</span>, <span class="highlights">POST</span>, <span class="highlights">SET</span>, etc.) and URL pattern ("Route"), and methods to specify what template ("view") engine is used, where template files are located, and what template to use to render a response. You can use Express middleware to add support for cookies, sessions, and users, getting <span class="highlights">POST/GET</span> parameters, etc. You can use any database mechanism supported by Node (Express does not define any database-related behaviour).
+                </p><br>
+                <p class="justifying">
+                    The following sections explain some of the common things you'll see when working with <em>Express</em> and <em>Node code</em>.
+                </p>
+            </article>
+        </section>
+        
+        <br>
+
+        <section class="main-section" id="Helloworld_Express">
+            <header id="world">
+                Helloworld Express
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    First lets consider the standard Express Hello World example (we discuss each part of this below, and in the following sections).
+                </p>
+                <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Tip:</span> If you have Node and Express already installed (or if you install them as shown in the <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment" target="_blank"> next article</a>), you can save this code in a text file called <strong>app.js</strong> and run it in a bash command prompt by calling:   
+                        </p>
+                        <p class="justifying">
+                            <strong>node ./app.js</strong><br><br>
+                        </p>
+                </div>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                           &nbsp; var express = require('express');<br>
+                           &nbsp; var app = express();<br><br>
+                           &nbsp;<span class="darkblack"> app.get('/', function(req, res) { <br>
+                        &nbsp;  res.send('Hello World!');<br>
+                        &nbsp; });</span> <br><br>
+                        &nbsp; app.listen(3000, function() { <br>
+                            &nbsp; console.log('Example app listening on port 3000!'); <br>
+                            &nbsp; }); <br>
+                        </code>
+                    </div>
+                </p>
+                <p class="justifying">
+                    The first two lines <span class="highlights">require()</span> (import) the express module and create an <a href="https://expressjs.com/en/4x/api.html#app" target="_blank">Express application</a>. This object, which is traditionally named <span class="highlights">app</span>, has methods for routing HTTP requests, configuring middleware, rendering HTML views, registering a template engine, and modifying <a href="https://expressjs.com/en/4x/api.html#app.settings.table" target="_blank">application settings</a> that control how the application behaves (e.g. the environment mode, whether route definitions are case sensitive, etc.)
+                </p>
+                <p class="justifying">
+                    The middle part of the code (the three lines starting with <span class="highlights">app.get</span>) shows a route definition. The <span class="highlights">app.get()</span> method specifies a callback function that will be invoked whenever there is an HTTP <span class="highlights">GET</span> request with a <span class="highlights">path ('/')</span> relative to the site root. The callback function takes a request and a response object as arguments, and simply calls <a href="https://expressjs.com/en/4x/api.html#res.send" target="_blank">send()</a> on the response to return the string "Hello World!"
+                </p>
+                <p class="justifying">
+                    The final block starts up the server on port '3000' and prints a log comment to the console. With the server running, you could go to <span class="highlights">localhost:3000</span> in your browser to see the example response returned.
+                </p>
+            </article>
+        </section>
+
+      <br>
+
+        <section class="main-section" id="Importing_and_creating_modules">
+            <header id="importing">
+                Importing and creating modules
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    A module is a JavaScript library/file that you can import into other code using Node's <span class="highlights">require()</span> function. Express itself is a module, as are the middleware and database libraries that we use in our Express applications.
+                </p>
+                <p class="justifying">
+                    The code below shows how we import a module by name, using the Express framework as an example. First we invoke the <span class="highlights">require()</span> function, specifying the name of the module as a string <span class="highlights">('express')</span>, and calling the returned object to create an <a href="https://expressjs.com/en/4x/api.html#app" target="_blank">Express application</a>. We can then access the properties and functions of the application object.
+                </p>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp; <span class="blue">var</span> express <span class="brown">=</span><span class="red"> require</span><span class="gray">(</span><span class="green">'express'</span><span class="gray">);</span><br>
+                        &nbsp;<span class="blue"> var</span> app = <span class="red">express</span><span class="gray">();</span><br>
+                        </code>
+                    </div>
+                 </p>
+                
+                 <p class="justifying">
+                    You can also create your own modules that can be imported in the same way.
+                 </p>
+                 <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Tip:</span> You will want to create your own modules, because this allows you to organise your code into managable parts — a monolithic single-file application is hard to understand and maintain. Using modules also helps you manage your namespace, because only the variables you explicitly export are imported when you use a module.
+                        </p>
+                </div>
+                <br>
+                <p class="justifying">
+                    To make objects available outside of a module you just need to expose them as additional properties on the <span class="highlights">exports</span> object. For example, the <strong>square.js</strong> module below is a file that exports <span class="highlights">area()</span> and <span class="highlights">perimeter()</span> methods:
+                </p>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp;exports<span class="gray">.</span><span class="red">area</span> = <span class="blue">function</span><span class="gray">(</span>width<span class="gray">) {</span> <span class="blue">return</span> width <span class="brown">*</span> width<span class="gray">; };</span><br>
+                        &nbsp;exports<span class="gray">.</span><span class="red">perimeter</span> <span class="brown">=</span> <span class="blue">function</span><span class="gray">(</span>width<span class="gray">) {</span> <span class="blue">return</span><span class="brown"> 4 *</span> width<span class="gray">; };</span><br>
+                        </code>
+                    </div>
+                </p>
+                <p class="justifying">
+                    We can import this module using <span class="highlights">require()</span>, and then call the exported method(s) as shown:
+                </p>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp;<span class="blue">var</span> square <span class="brown">=</span><span class="red"> require</span><span class="gray">(</span><span class="green">'./square'</span><span class="gray">);</span><br>
+                        &nbsp;console<span class="gray">.</span><span class="red">log</span><span class="gray">(</span><span class="green">'The area of a square with a width of 4 is '</span> <span class="brown">+</span> square<span class="gray">.</span><span class="red">area</span><span class="gray">(</span><span class="brown">4</span><span class="gray">));</span><br>
+                        </code>
+                    </div>
+                </p>
+                <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Note:</span> You can also specify an absolute path to the module (or a name, as we did initially).
+                        </p>
+                </div>
+                <br>
+                <p class="justifying">
+                    If you want to export a complete object in one assignment instead of building it one property at a time, assign it to <span class="highlights">module.exports</span> as shown below (you can also do this to make the root of the exports object a constructor or other function):
+                </p>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp;module<span class="gray">.</span>exports <span class="brown">=</span><span class="gray"> {</span><br>
+                        &nbsp;&nbsp;&nbsp;<span class="red">area</span><span class="gray">:</span> <span class="blue">function</span><span class="gray">(</span>width<span class="gray">) {</span><br>
+                        &nbsp; &nbsp;&nbsp;&nbsp;<span class="blue">return</span> width <span class="brown">*</span> width<span class="gray">;</span><br>
+                        &nbsp;<span class="gray">},</span><br><br>
+                        &nbsp;<span class="red">perimeter</span><span class="gray">:</span> <span class="blue">function</span><span class="gray">(</span>width<span class="gray">) {</span><br>
+                        &nbsp; &nbsp;&nbsp;&nbsp;<span class="blue">return</span> <span class="brown">4 *</span> width<span class="gray">;</span><br>
+                        &nbsp;<span class="gray">}</span><br>
+                        &nbsp;<span class="gray">};</span>
+                        </code>
+                    </div>
+                </p>
+                <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Note:</span> You can think of <span class="highlights">exports</span> as a shortcut to <span class="highlights">module.exports</span> within a given module. In fact, <span class="highlights">exports</span> is just a variable that gets initialized to the value of <span class="highlights">module.exports</span> before the module is evaluated. That value is a reference to an object (empty object in this case). This means that <span class="highlights">exports</span> holds a reference to the same object referenced by <span class="highlights">module.exports</span>. It also means that by assigning another value to <span class="highlights">exports</span> it's no longer bound to <span class="highlights">module.exports</span>.
+                        </p>
+                </div>
+            </article>
+        </section>
+
+        <br>
+
+       <section class="main-section" id="Using_asynchronous_APIs">
+            <header id="asynchronousapis">
+                Using asynchronous APIs
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    JavaScript code frequently uses asynchronous rather than synchronous APIs for operations that may take some time to complete. A synchronous API is one in which each operation must complete before the next operation can start. For example, the following log functions are synchronous, and will print the text to the console in order (First, Second).
+                </p>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp;console<span class="gray">.</span><span class="red">log</span><span class="gray">(</span><span class="green">'First'</span><span class="gray">);</span><br>
+                        &nbsp;console<span class="gray">.</span><span class="red">log</span><span class="gray">(<span class="green">'Second'</span><span class="gray">);</span><br>
+                        </code>
+                    </div>
+                </p>
+                <p class="justifying">
+                    By contrast, an asynchronous API is one in which the API will start an operation and immediately return (before the operation is complete). Once the operation finishes, the API will use some mechanism to perform additional operations. For example, the code below will print out "Second, First" because even though <span class="highlights">setTimeout()</span> method is called first, and returns immediately, the operation doesn't complete for several seconds.
+                </p>
+                
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp;<span class="red">setTimeout</span><span class="gray">(</span><span class="blue">function</span><span class="gray">() {</span><br>
+                        &nbsp;&nbsp;&nbsp;console<span class="gray">.</span><span class="red">log</span><span class="gray">(</span><span class="green">'First'</span><span class="gray">);</span><br>
+                        &nbsp;&nbsp;&nbsp;<span class="gray">},</span><span class="brown"> 3000</span><span class="gray">);</span><br>
+                        &nbsp;console<span class="gray">.</span><span class="red">log</span><span class="gray">(</span><span class="green">'Second'</span><span class="gray">);</span>
+                        </code>
+                    </div>
+                </p>
+                <p class="justifying">
+                    Using non-blocking asynchronous APIs is even more important on Node than in the browser because Node is a single-threaded event-driven execution environment. "Single threaded" means that all requests to the server are run on the same thread (rather than being spawned off into separate processes). This model is extremely efficient in terms of speed and server resources, but it does mean that if any of your functions call synchronous methods that take a long time to complete, they will block not just the current request, but every other request being handled by your web application.
+                </p>
+                <p class="justifying">
+                    There are a number of ways for an asynchronous API to notify your application that it has completed. The most common way is to register a callback function when you invoke the asynchronous API, that will be called back when the operation completes. This is the approach used above.
+                </p>
+                <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Tip:</span> Using callbacks can be quite "messy" if you have a sequence of dependent asynchronous operations that must be performed in order because this results in multiple levels of nested callbacks. This problem is commonly known as "callback hell". This problem can be reduced by good coding practices (see <span class="highlights"><a href="http://callbackhell.com/" target="_blank">http://callbackhell.com/</a></span>), using a module like <span class="highlights"><a href="https://www.npmjs.com/package/async" target="_blank">async</a></span>, or even moving to ES6 features like <span class="highlights"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promises</a></span>.
+                        </p>
+                </div>
+                <br>
+                <div class="yellow">
+                    <i class="fa fa-sticky-note"></i>
+                        <p class="justifying ">
+                            <span class="black">Note:</span> A common convention for Node and Express is to use error-first callbacks. In this convention, the first value in your callback functions is an error value, while subsequent arguments contain success data. There is a good explanation of why this approach is useful in this blog: The <span class="highlights"><a href="http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/" target="_blank">Node.js Way - Understanding Error-First Callbacks</a></span> (fredkschott.com).
+                        </p>
+                </div>
+            </article>
+       </section>
+
+       <section class="main-section" id="Creating_route_handlers">
+            <header id="routehandlers">
+                Creating route handlers
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    In our Hello World Express example (see above), we defined a (callback) route handler function for HTTP <span class="highlights">GET</span> requests to the site root <span class="highlights">('/')</span>.
+                </p>
+                <p class="justifying">
+                    <div class="stylingcode">
+                        <code>
+                        &nbsp;app<span class="darkblack">.get</span>('/', function(req, res) {<br>
+                        &nbsp;&nbsp;&nbsp;res.send('Hello World!');<br>
+                        &nbsp;});<br>
+                        </code>
+                    </div>
+                </p>
+                <p class="justifying">
+                    The callback function takes a request and a response object as arguments. In this case, the method simply calls <span class="highlights">send()</span> on the response to return the string "Hello World!" There are a <a href="https://expressjs.com/en/guide/routing.html#response-methods" target="_blank">number of other response methods</a> for ending the request/response cycle, for example, you could call <span class="highlights">res.json()</span> to send a JSON response or <span class="highlights">res.sendFile()</span> to send a file.
+                </p>
+            </article>
+       </section>
+
+        <section class="main-section" id="Reference" >
+            <header id="refe">
+                Reference
+            </header>
+            <hr>
+            <article>
+                <p class="justifying">
+                    All the documentation in this page is taken from
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction" target="_blank">MDN</a>
+                </p>
+            </article>
+        </section>
+      </div>
+    </main>
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+</body>
+</html>
